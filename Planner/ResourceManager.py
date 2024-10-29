@@ -1,3 +1,4 @@
+import csv
 from Planner import Resource, Recipe
 
 
@@ -11,9 +12,18 @@ class ResourceManager:
         r_id = resource.resource_id
         if not(r_id in self.resources.keys()):
             self.resources["r_id"] = resource
+        else:
+            print(f"{r_id} already in resource list")
 
-    def add_resource_from_json(self, json_dict:dict):
-        # TODO: Resource from json
+    def add_resources_from_csv(self, csv_path:str) -> None:
+        """
+        :param csv_path: Expects csv with at least ItemID and MaxStackSize column
+        """
+
+        with open(csv_path) as f:
+            data = csv.DictReader(f)
+            for row in data:
+                print(row)
         pass
 
     def add_recipe(self, recipe:"Recipe") -> None:
@@ -23,7 +33,7 @@ class ResourceManager:
     def get_resource_by_id(self, resource_id:str) -> "Resource":
         pass    # get resource with matching id from resources list
 
-    def get_recipe_by_output_id(self) -> list["Recipe"]:
+    def get_recipes_by_output_resource(self, output_resource:"Resource") -> list["Recipe"]:
         pass    # return all recipes where resource with matching id is in output list
 
 

@@ -1,4 +1,4 @@
-from Planner import FileManager, JSONReader
+from Planner import FileManager, JSONReader, ResourceManager
 
 # reader = JSONReader()
 # recipe_dict = reader.return_json(r"D:\MC_ResourcePlanner\Resources_new\Recipes\minecraft\acacia_fence_gate.json")
@@ -10,10 +10,15 @@ from Planner import FileManager, JSONReader
 #     for item in keys:
 #         print(keys[item]['item'])
 #         print(pattern.count(item))
+all_items_data = r"D:\MC_ResourcePlanner\Resources_new\Data Files\mc_create_fulldata.csv"
 
-csv_file_in = r"D:\MC_ResourcePlanner\Resources_new\Data Files\resources_mc_create_1.20.1.csv"
-csv_file_out = r"D:\MC_ResourcePlanner\Resources_new\Data Files\mc_create_fulldata.csv"
-json_file = r"D:\MC_ResourcePlanner\Resources_new\Data Files\items.json"
+def createAllDataFile():
+    in_file = r"D:\MC_ResourcePlanner\Resources_new\Data Files\resources_mc_create_1.20.1.csv"
 
-fm = FileManager()
-fm.blocks_csv_add_stack_size(csv_file_in, json_file, csv_file_out)
+    json_file = r"D:\MC_ResourcePlanner\Resources_new\Data Files\items.json"
+
+    rm = FileManager
+    FileManager.blocks_csv_add_stack_size(in_file,json_file,all_items_data)
+
+rm = ResourceManager()
+rm.add_resources_from_csv(all_items_data)

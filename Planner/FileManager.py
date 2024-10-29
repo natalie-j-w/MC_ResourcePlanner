@@ -1,15 +1,22 @@
 import json
 import csv
+import os
 
 class FileManager:
+    resources_path = r"D:\MC_ResourcePlanner\Resources_new\Data Files"
+    files = {
+        "blocks_data": os.path.join(resources_path, "blocks.json"),
+        "items_data": os.path.join(resources_path, "items.json"),
+        "fluids_data": os.path.join(resources_path, "fluids.json"),
+        "all_resources": os.path.join(resources_path, "mc_create_fulldata.csv")
+    }
+
     def __init__(self):
         pass
 
     @staticmethod
     def blocks_csv_add_stack_size(csv_path_in, json_path, csv_path_out):
         from Planner import JSONReader
-        # create: stack size 64 unless in list of items that have 1
-        # minecraft: items.json -> 64 unless max_stack_size is specified
 
         create_mod_stack_one = ["create:builders_tea",
                                 "create:goggles",

@@ -5,6 +5,7 @@ class Resource(ABC):
     display_name: str
     max_stack: int
     recipes_where_output: ["Resource"]
+    mineable: list["Resource"]
 
     def __init__(self, resource_id: str, name: str, max_stack: int):
         self.resource_id = resource_id
@@ -14,10 +15,11 @@ class Resource(ABC):
     def create_from_json(self, json_dict:dict):
         pass
 
-    @abstractmethod
     def print_info(self) -> None:
         pass
 
-    @abstractmethod
-    def get_recipes(self) -> list["Recipe"]:
+    def _recipes_where_output(self) -> None:
+        pass
+
+    def _mineable(self) -> None:
         pass

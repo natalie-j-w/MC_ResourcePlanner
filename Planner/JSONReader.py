@@ -4,13 +4,13 @@ import json
 
 class JSONReader:
     @staticmethod
-    def return_json(json_file=str) -> dict:
+    def return_json(json_file:str) -> dict:
         with open(json_file) as f:
             data = json.load(f)
         return data
 
     @staticmethod
-    def print_keys(json_file=str, indent=0) -> None:
+    def print_keys(json_file:str, indent=0) -> None:
         """
         :param json_file: Path to json file
         :return: Recursively prints all keys in a json file with the appropriate hierarchy
