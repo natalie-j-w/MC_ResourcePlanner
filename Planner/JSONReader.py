@@ -1,13 +1,20 @@
+from Planner import Resource
 import json
 
 
 class JSONReader:
     @staticmethod
+    def return_json(json_file=str) -> dict:
+        with open(json_file) as f:
+            data = json.load(f)
+        return data
+
+    @staticmethod
     def print_keys(json_file=str, indent=0) -> None:
-        '''
+        """
         :param json_file: Path to json file
         :return: Recursively prints all keys in a json file with the appropriate hierarchy
-        '''
+        """
 
         with open(json_file) as f:
             blocks_data = json.load(f)
@@ -30,5 +37,7 @@ class JSONReader:
                     else:
                         print(" " * indent + str(item))
 
-    def populate_recipetypes_enum(self):
-        pass
+    @staticmethod
+    def get_max_stack_from_json_by_id(json_dict, item_id:str) -> int:
+        item_data = json_dict.get(item_id, {})
+        return item_data.get("max_stack_size", 64)
