@@ -1,4 +1,4 @@
-from Planner import FileManager, JSONReader, ResourceManager
+from Planner import FileManager, JSONReader, ResourceManager, Resource
 
 # reader = JSONReader()
 # recipe_dict = reader.return_json(r"D:\MC_ResourcePlanner\Resources_new\Recipes\minecraft\acacia_fence_gate.json")
@@ -22,3 +22,5 @@ def createAllDataFile():
 
 rm = ResourceManager()
 rm.add_resources_from_csv(all_items_data)
+for key in rm.resources:
+    print(key, rm.resources[key])

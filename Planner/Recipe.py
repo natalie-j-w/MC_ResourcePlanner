@@ -17,7 +17,7 @@ class Recipe:
     def get_input_output(self):
         from Planner import Resource
 
-        match(self.recipe_type):
+        match self.recipe_type:
             case "":
                 empty_resource = Resource("", "", 0)
                 self.input = [Recipe._RecipeInputOutput(resource=empty_resource, count=0)]

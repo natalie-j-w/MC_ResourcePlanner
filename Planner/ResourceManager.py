@@ -17,14 +17,17 @@ class ResourceManager:
 
     def add_resources_from_csv(self, csv_path:str) -> None:
         """
-        :param csv_path: Expects csv with at least ItemID and MaxStackSize column
+        :param csv_path: Expects csv with ItemName, ItemID and MaxStackSize column
         """
 
         with open(csv_path) as f:
             data = csv.DictReader(f)
             for row in data:
-                print(row)
-        pass
+                new_resource = Resource(row["ItemID"],
+                                        row["ItemName"],
+                                        row["MaxStackSize"],
+                                        row["ModID"])
+                self.resources[new_resource.resource_id] = new_resource
 
     def add_recipe(self, recipe:"Recipe") -> None:
         # get output resource IDs, use Resource with matching ID as key,list of recipes where Resource is in output list as value
