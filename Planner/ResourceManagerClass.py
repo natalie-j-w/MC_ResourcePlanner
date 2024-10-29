@@ -5,7 +5,10 @@ from Planner import Resource, Recipe
 class ResourceManager:
     def __init__(self):
         self.resources = {str: "Resource"}
-        self.recipes = {"Resource": list["Recipe"]}
+        self.recipes = list["Recipe"]
+        self.recipe_output_index = dict[Resource:list[Recipe]]
+        # TODO: Get tags for tags list
+        self.tags = list["Tag"]
 
     def add_resource(self, resource:"Resource") -> None:
         # Resource ID is unique key, Resource is value
@@ -34,9 +37,10 @@ class ResourceManager:
         pass
 
     def get_resource_by_id(self, resource_id:str) -> "Resource":
-        pass    # get resource with matching id from resources list
+        return self.resources.get(resource_id)
 
-    def get_recipes_by_output_resource(self, output_resource:"Resource") -> list["Recipe"]:
-        pass    # return all recipes where resource with matching id is in output list
+    def _recipes_output_index(self, output_resource:"Resource") -> None:
+        # return all recipes where resource with matching id is in output list
+        pass
 
 
