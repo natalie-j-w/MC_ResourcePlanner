@@ -6,19 +6,19 @@ class Resource(ABC):
     display_name: str
     max_stack: int
     recipes_where_output: ["Resource"]
-    mineable: list["Resource"]
+    mineable: list["Resource"]  # example: only gets list from axe.json if item ID is in minecraft:axes
 
-    def __init__(self, resource_id: str, name: str, max_stack: int, mod_id:str):
+    def __init__(self, resource_id="", mod_id="", name="", max_stack=64):
         self.resource_id = resource_id
         self.display_name = name
         self.max_stack = max_stack
         self.mod_id = mod_id
 
-    def create_from_json(self, json_dict:dict):
-        pass
-
-    def print_info(self) -> None:
-        pass
+    def __repr__(self):
+        return repr(f"ID: {self.resource_id}, "
+              f"Name: {self.display_name}, "
+              f"Max Stack: {self.max_stack}, "
+              f"Mod: {self.mod_id}")
 
     def _recipes_where_output(self) -> None:
         pass
@@ -26,8 +26,3 @@ class Resource(ABC):
     def _mineable(self) -> None:
         pass
 
-    def __repr__(self):
-        return repr(f"ID: {self.resource_id}, "
-              f"Name: {self.display_name}, "
-              f"Max Stack: {self.max_stack}, "
-              f"Mod: {self.mod_id}")

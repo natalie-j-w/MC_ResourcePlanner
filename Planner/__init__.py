@@ -3,7 +3,7 @@ from .JSONReader import JSONReader
 from .NBTReader import NBTReader
 from .Recipe import Recipe
 from .Resource import Resource
-from .ResourceManagerClass import ResourceManager
+from .DataManager import DataManager
 from .ToolTypes import ToolTypes
 
 __all__ = ["FileManager",
@@ -11,5 +11,5 @@ __all__ = ["FileManager",
            "NBTReader",
            "Recipe",
            "Resource",
-           "ResourceManager",
+           "DataManager",
            "ToolTypes"]

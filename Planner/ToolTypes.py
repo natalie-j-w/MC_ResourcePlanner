@@ -2,9 +2,9 @@ from enum import Enum
 
 
 class ToolTypes(Enum):
-    PICKAXE = "pickaxe"
-    AXE = "axe"
-    SHOVEL = "shovel"
-    HOE = "hoe"
+    PICKAXE = r"mineable\pickaxe"
+    AXE = r"mineable\axe"
+    SHOVEL = r"mineable\shovel"
+    HOE = r"mineable\hoe"
 
 

@@ -2,7 +2,8 @@ from enum import Enum
 
 
 class ResourceTypes(Enum):
-    ITEM = "Item"
-    BLOCK = "Block"
-    TAG = "Tag"
-    UNKNOWN = "Unknown"
+    ITEM = "item"
+    BLOCK = "block"
+    TAG = "tag"
+    FLUID = "fluid"
+    UNKNOWN = "unknown"
