@@ -50,3 +50,12 @@ class FileManager:
     def read_tags_folders(self):
         pass
 
+    @staticmethod
+    def find_json_files(directory):
+        json_files = []
+        for root, _, files in os.walk(directory):
+            for file in files:
+                if file.endswith(".json"):
+                    json_files.append(os.path.join(root, file))
+        return json_files
+
