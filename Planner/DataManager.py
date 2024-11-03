@@ -13,16 +13,13 @@ class DataManager:
     """
     Central manager for all resources, recipes and tags. Defines methods to load and retrieve data.
     """
-    resources: {str: "Resource"}
-    recipes: list["Recipe"]
-    tags: {str: "Tag"}
-    index_recipes_by_output: dict[Resource:list]
+    resources = {}
+    recipes = []
+    tags = {}
+    index_recipes_by_output: {}
 
     def __init__(self):
-        self.resources = {}
-        self.recipes = []
-        self.index_recipes_by_output = {}
-        self.tags = {}
+        pass
 
     def add_resource(self, resource:"Resource") -> None:
         """
@@ -79,8 +76,10 @@ class DataManager:
         """
         if self.resources.get(resource_id):
             return self.resources.get(resource_id)
-        else:
+        elif self.tags.get(resource_id):
             return self.tags.get(resource_id)
+        else:
+            return Resource()
 
     def _recipes_output_index(self) -> None:
         # return all recipes where resource with matching id is in output list

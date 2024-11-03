@@ -7,6 +7,7 @@ class Resource(ABC):
     max_stack: int
     recipes_where_output: ["Resource"]
     mineable: list["Resource"]  # example: only gets list from axe.json if item ID is in minecraft:axes
+    img_path: str # TODO: Add images to resources
 
     def __init__(self, resource_id="", mod_id="", name="", max_stack=64):
         self.resource_id = resource_id
@@ -26,3 +27,5 @@ class Resource(ABC):
     def _mineable(self) -> None:
         pass
 
+    def add_image(self, img:str):
+        self.img_path = img

@@ -6,9 +6,12 @@ if TYPE_CHECKING:
 
 class Tag:
     mod_id: str
-    name: str
+    tag_id: str
     resources: list[Resource]
 
-    def __init__(self, mod_id, name):
+    def __init__(self, mod_id, tag_id):
         self.mod_id = mod_id
-        self.name = name
+        self.tag_id = tag_id
+
+    def __repr__(self):
+        return f"Tag(Mod:\"{self.mod_id}\", Tag ID:\"{self.tag_id}\")"
